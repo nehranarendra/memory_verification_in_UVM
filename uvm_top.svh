@@ -1,35 +1,38 @@
-`include "interface.sv"
-
-//-------------------------[NOTE]---------------------------------
-//Particular testcase can be run by uncommenting, and commenting the rest
-//`include "random_test.sv"
-//`include "wr_rd_test.sv"
-`include "default_rd_test.sv"
-//----------------------------------------------------------------
+//including interfcae and testcase files
+`include "mem_interface.sv"
+`include "mem_base_test.sv"
+`include "mem_wr_rd_test.sv"
+//---------------------------------------------------------------
 
 module tbench_top;
-  
+
+  //---------------------------------------
   //clock and reset signal declaration
+  //---------------------------------------
   bit clk;
   bit reset;
   
+  //---------------------------------------
   //clock generation
+  //---------------------------------------
   always #5 clk = ~clk;
   
+  //---------------------------------------
   //reset Generation
+  //---------------------------------------
   initial begin
     reset = 1;
     #5 reset =0;
   end
   
+  //---------------------------------------
+  //interface instance
+  //---------------------------------------
+  mem_if intf(clk,reset);
   
-  //creatinng instance of interface, inorder to connect DUT and testcase
-  mem_intf intf(clk,reset);
-  
-  //Testcase instance, interface handle is passed to test as an argument
-  test t1(intf);
-  
-  //DUT instance, interface signals are connected to the DUT ports
+  //---------------------------------------
+  //DUT instance
+  //---------------------------------------
   memory DUT (
     .clk(intf.clk),
     .reset(intf.reset),
@@ -40,8 +43,22 @@ module tbench_top;
     .rdata(intf.rdata)
    );
   
-  //enabling the wave dump
+  //---------------------------------------
+  //passing the interface handle to lower heirarchy using set method 
+  //and enabling the wave dump
+  //---------------------------------------
   initial begin 
-    $dumpfile("dump.vcd"); $dumpvars;
+    uvm_config_db#(virtual mem_if)::set(uvm_root::get(),"*","vif",intf);
+    //enable wave dump
+    $dumpfile("dump.vcd"); 
+    $dumpvars;
   end
+  
+  //---------------------------------------
+  //calling test
+  //---------------------------------------
+  initial begin 
+    run_test();
+  end
+  
 endmodule

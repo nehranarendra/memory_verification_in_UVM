@@ -7,7 +7,6 @@ class mem_seq_item extends uvm_sequence_item;
   rand bit       rd_en;
   rand bit [7:0] wdata;
        bit [7:0] rdata;
-  
   //---------------------------------------
   //Utility and Field macros
   //---------------------------------------

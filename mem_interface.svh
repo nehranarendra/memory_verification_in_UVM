@@ -8,8 +8,7 @@ interface mem_if(input logic clk,reset);
   logic rd_en;
   logic [7:0] wdata;
   logic [7:0] rdata;
-  
-  //---------------------------------------
+ //---------------------------------------
   //driver clocking block
   //---------------------------------------
   clocking driver_cb @(posedge clk);

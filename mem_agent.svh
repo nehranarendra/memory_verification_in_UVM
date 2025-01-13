@@ -22,7 +22,6 @@ class mem_agent extends uvm_agent;
   function new (string name, uvm_component parent);
     super.new(name, parent);
   endfunction : new
-
   //---------------------------------------
   // build_phase
   //---------------------------------------

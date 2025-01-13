@@ -32,7 +32,6 @@ class mem_model_base_test extends uvm_test;
     //print's the topology
     print();
   endfunction
-
   //---------------------------------------
   // end_of_elobaration phase
   //---------------------------------------   

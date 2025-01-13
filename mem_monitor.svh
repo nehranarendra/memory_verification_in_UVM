@@ -1,5 +1,4 @@
 class mem_monitor extends uvm_monitor;
-
   //---------------------------------------
   // Virtual Interface
   //---------------------------------------

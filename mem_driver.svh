@@ -8,7 +8,6 @@ class mem_driver extends uvm_driver #(mem_seq_item);
   //--------------------------------------- 
   virtual mem_if vif;
   `uvm_component_utils(mem_driver)
-    
   //--------------------------------------- 
   // Constructor
   //--------------------------------------- 

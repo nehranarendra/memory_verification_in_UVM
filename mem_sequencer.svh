@@ -1,7 +1,6 @@
 class mem_sequencer extends uvm_sequencer#(mem_seq_item);
 
   `uvm_component_utils(mem_sequencer) 
-
   //---------------------------------------
   //constructor
   //---------------------------------------

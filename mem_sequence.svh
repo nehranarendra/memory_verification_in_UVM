@@ -4,7 +4,6 @@
 class mem_sequence extends uvm_sequence#(mem_seq_item);
   
   `uvm_object_utils(mem_sequence)
-  
   //--------------------------------------- 
   //Constructor
   //---------------------------------------

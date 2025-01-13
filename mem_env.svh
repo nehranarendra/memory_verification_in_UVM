@@ -1,8 +1,7 @@
 `include "mem_agent.sv"
 `include "mem_scoreboard.sv"
 
-class mem_model_env extends uvm_env;
-  
+class mem_model_env extends uvm_env; 
   //---------------------------------------
   // agent and scoreboard instance
   //---------------------------------------
